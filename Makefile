@@ -6,7 +6,6 @@ CPPOUT = generated/cpp
 PYTHONOUT = generated/py
 STAMPDIR = generated
 
-
 generate_command = $(PROTOC) --proto_path=$(INPUTDIR) --cpp_out=$(CPPOUT) #--python_out=$(PYTHONOUT)
 
 # Base names of all input files
@@ -19,13 +18,20 @@ cpp_headers := $(patsubst %,$(CPPOUT)/%.pb.h,$(inputs))
 
 all: $(cpp_impls) $(cpp_headers)
 
-
 $(cpp_impls): $(CPPOUT)/%.pb.cc : $(STAMPDIR)/%
 $(cpp_headers): $(CPPOUT)/%.pb.h : $(STAMPDIR)/%
 
 $(stamps): $(STAMPDIR)/% : $(INPUTDIR)/%.proto $(STAMPDIR) $(CPPOUT) $(PYTHONOUT)
 	$(generate_command) $<
 	@touch $@
+
+# Generate dependency makefiles
+#depends := $(patsubst %,$(STAMPDIR)/%.d,$(inputs)) 
+#$(depends) : $(STAMPDIR)/%.d : $(INPUTDIR)/%.proto
+#	grep '^include' $< | sed "s/[^\"]*\"\([^\"]*.proto\)\"/$($< :"
+
+$(STAMPDIR)/Geometry : $(STAMPDIR)/Vec3
+$(STAMPDIR)/Topology : $(STAMPDIR)/Vec3
 
 $(CPPOUT) $(PYTHONOUT) $(STAMPDIR):
 	mkdir -p $@
