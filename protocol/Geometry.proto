@@ -1,9 +1,6 @@
 package brepbuffer.geom;
 
-import "Vec3.proto"
-
-
-
+import "Vec3.proto";
 
 message Curve {
 	message Line {
