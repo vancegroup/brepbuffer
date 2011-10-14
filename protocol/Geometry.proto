@@ -63,4 +63,12 @@ message Surface {
 		optional double radius_major = 3;
 		optional double radius_minor = 4;
 	}
+
+	// Represents a single surface - hence only one of the following fields
+	// should be expected to be set.
+	optional Plane plane = 1;
+	optional Cylinder cylinder = 2;
+	optional Cone cone = 3;
+	optional Sphere sphere = 4;
+	optional Hyperbola hyperbola = 5;
 }
