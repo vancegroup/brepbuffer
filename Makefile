@@ -2,26 +2,27 @@
 
 PROTOC = protoc
 INPUTDIR = protocol
-CPPOUT = generated/cpp
-PYTHONOUT = generated/py
-STAMPDIR = generated
+
+OUTDIR = generated
+CPPOUT = $(OUTDIR)/cpp
+PYTHONOUT = $(OUTDIR)/py
 
 generate_command = $(PROTOC) --proto_path=$(INPUTDIR) --cpp_out=$(CPPOUT) #--python_out=$(PYTHONOUT)
 
 # Base names of all input files
 inputs := Geometry Topology Vec3
 
-stamps := $(patsubst %,$(STAMPDIR)/%,$(inputs))
+stamps := $(patsubst %,$(OUTDIR)/%,$(inputs))
 
 cpp_impls := $(patsubst %,$(CPPOUT)/%.pb.cc,$(inputs))
 cpp_headers := $(patsubst %,$(CPPOUT)/%.pb.h,$(inputs))
 
 all: $(cpp_impls) $(cpp_headers)
 
-$(cpp_impls): $(CPPOUT)/%.pb.cc : $(STAMPDIR)/%
-$(cpp_headers): $(CPPOUT)/%.pb.h : $(STAMPDIR)/%
+$(cpp_impls): $(CPPOUT)/%.pb.cc : $(OUTDIR)/%
+$(cpp_headers): $(CPPOUT)/%.pb.h : $(OUTDIR)/%
 
-$(stamps): $(STAMPDIR)/% : $(INPUTDIR)/%.proto $(STAMPDIR) $(CPPOUT) $(PYTHONOUT)
+$(stamps): $(OUTDIR)/% : $(INPUTDIR)/%.proto $(OUTDIR)
 	$(generate_command) $<
 	@touch $@
 
@@ -30,10 +31,10 @@ $(stamps): $(STAMPDIR)/% : $(INPUTDIR)/%.proto $(STAMPDIR) $(CPPOUT) $(PYTHONOUT
 #$(depends) : $(STAMPDIR)/%.d : $(INPUTDIR)/%.proto
 #	grep '^include' $< | sed "s/[^\"]*\"\([^\"]*.proto\)\"/$($< :"
 
-$(STAMPDIR)/Geometry : $(STAMPDIR)/Vec3
-$(STAMPDIR)/Topology : $(STAMPDIR)/Vec3 $(STAMPDIR)/Geometry
+$(OUTDIR)/Geometry : $(OUTDIR)/Vec3
+$(OUTDIR)/Topology : $(OUTDIR)/Vec3 $(OUTDIR)/Geometry
 
-$(CPPOUT) $(PYTHONOUT) $(STAMPDIR):
+$(OUTDIR):
 	mkdir -p $@
 
 clean:
