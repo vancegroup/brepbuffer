@@ -22,7 +22,10 @@ message Curve {
 	message Parabola {
 	}
 	message NURBS {
-	}	
+	}
+
+	// Represents a single curve - hence only one of the following fields
+	// should be expected to be set.
 	optional Line line = 1;
 	optional Circle circle = 2;
 	optional Ellipse ellipse = 3;
@@ -39,12 +42,12 @@ message Surface {
 	message Cone {
 		optional Vec3 location = 1;
 		optional Vec3 axis = 2;
-		optional double halfangle = 3;		
+		optional double halfangle = 3;
 	}
 	message Cylinder {
 		optional Vec3 center = 1;
 		optional Vec3 axis = 2;
-		optional double radius = 3;		
+		optional double radius = 3;
 	}
 	message Plane {
 		optional Vec3 origin = 1;
@@ -52,12 +55,12 @@ message Surface {
 	}
 	message Sphere {
 		optional Vec3 center = 1;
-		optional double radius = 2;		
+		optional double radius = 2;
 	}
 	message Hyperbola {
 		optional Vec3 center = 1;
 		optional Vec3 axis = 2;
 		optional double radius_major = 3;
-		optional double radius_minor = 4;	
+		optional double radius_minor = 4;
 	}
 }
