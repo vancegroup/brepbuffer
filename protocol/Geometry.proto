@@ -7,57 +7,57 @@ import "Vec3.proto"
 
 message Curve {
 	message Line {
-		optional Vec3 origin = 0;
-		optional Vec3 direction = 1;
+		optional Vec3 origin = 1;
+		optional Vec3 direction = 2;
 	}
 	message Circle {
-		optional double radius = 0;
-		optional Vec3 center = 1;
-		optional Vec3 normal = 2;
+		optional double radius = 1;
+		optional Vec3 center = 2;
+		optional Vec3 normal = 3;
 	}
 	message Ellipse {
-		optional double radius_major = 0;
-		optional double radius_minor = 1;
+		optional double radius_major = 1;
+		optional double radius_minor = 2;
 	}
 	message Parabola {
 	}
 	message NURBS {
 	}	
-	optional Line line = 0;
-	optional Circle circle = 1;
-	optional Ellipse ellipse = 2;
-	optional Parabola parabola = 3;
-	optional NURBS nurbs = 4;
+	optional Line line = 1;
+	optional Circle circle = 2;
+	optional Ellipse ellipse = 3;
+	optional Parabola parabola = 4;
+	optional NURBS nurbs = 5;
 }
 
 message PCurve {
-	optional Curve curve = 0;
-	optional string face_id = 1;
+	optional Curve curve = 1;
+	optional string face_id = 2;
 }
 
 message Surface {
 	message Cone {
-		optional Vec3 location = 0;
-		optional Vec3 axis = 1;
-		optional double halfangle = 2;		
+		optional Vec3 location = 1;
+		optional Vec3 axis = 2;
+		optional double halfangle = 3;		
 	}
 	message Cylinder {
-		optional Vec3 center = 0;
-		optional Vec3 axis = 1;
-		optional double radius = 2;		
+		optional Vec3 center = 1;
+		optional Vec3 axis = 2;
+		optional double radius = 3;		
 	}
 	message Plane {
-		optional Vec3 origin = 0;
-		optional Vec3 normal = 1;
+		optional Vec3 origin = 1;
+		optional Vec3 normal = 2;
 	}
 	message Sphere {
-		optional Vec3 center = 0;
-		optional double radius = 1;		
+		optional Vec3 center = 1;
+		optional double radius = 2;		
 	}
 	message Hyperbola {
-		optional Vec3 center = 0;
-		optional Vec3 axis = 1;
-		optional double radius_major = 1;
-		optional double radius_minor = 2;	
+		optional Vec3 center = 1;
+		optional Vec3 axis = 2;
+		optional double radius_major = 3;
+		optional double radius_minor = 4;	
 	}
 }

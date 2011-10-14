@@ -3,40 +3,40 @@ package brepbuffer.topo;
 import "Vec3.proto"
 
 message Vertex {
-	optional Vec3 location = 0;
+	optional Vec3 location = 1;
 }
 
 message Edge {
-	optional Vertex start = 0; // Starting vertex
-	optional Vertex finish = 1; // Ending vertex
-	optional double p_start = 2; // Starting parameter value
-	optional double p_finish = 3; // Ending parameter value
-	optional Curve curve = 4;
-	repeated 
+	optional Vertex start = 1; // Starting vertex
+	optional Vertex finish = 2; // Ending vertex
+	optional double p_start = 3; // Starting parameter value
+	optional double p_finish = 4; // Ending parameter value
+	optional Curve curve = 5; // 3d curve
+	repeated PCurve p_curve = 6; // Parametric surface curves for each face bounded by this edge
 }
 
 message Wire {
-	repeated Edge edges = 0;
+	repeated Edge edges = 1;
 }
 
 message Face {
-	repeated Wire wires = 0;
+	repeated Wire wires = 1;
 }
 
 message Facade {
-	optional bool forward_orientation = 0 [ default = true ];
-	optional Face face = 1;
+	optional bool forward_orientation = 1 [ default = true ];
+	optional Face face = 2;
 }
 
 message Shell {
-	repeated Facade facades = 0;
+	repeated Facade facades = 1;
 }
 
 message Region {
-	required bool solid = 0;
-	repeated Shell shells = 1;
+	required bool solid = 1;
+	repeated Shell shells = 2;
 }
 
 message Body {
-	repeated Region regions = 0;
+	repeated Region regions = 1;
 }

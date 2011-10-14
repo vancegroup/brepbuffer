@@ -1,7 +1,7 @@
 package brepbuffer;
 
 message Vec3 {
-	optional double x = 0 [default = 0];
-	optional double y = 1 [default = 0];
-	optional double z = 2 [default = 0];
+	optional double x = 1 [default = 0];
+	optional double y = 2 [default = 0];
+	optional double z = 3 [default = 0];
 }
