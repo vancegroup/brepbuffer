@@ -12,8 +12,8 @@ message Edge {
 	optional Vertex finish = 2; // Ending vertex
 	optional double p_start = 3; // Starting parameter value
 	optional double p_finish = 4; // Ending parameter value
-	optional Curve curve = 5; // 3d curve
-	repeated PCurve p_curve = 6; // Parametric surface curves for each face bounded by this edge
+	optional geom.Curve curve = 5; // 3d curve
+	repeated geom.PCurve p_curve = 6; // Parametric surface curves for each face bounded by this edge
 }
 
 message Wire {
