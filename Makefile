@@ -31,7 +31,7 @@ $(stamps): $(STAMPDIR)/% : $(INPUTDIR)/%.proto $(STAMPDIR) $(CPPOUT) $(PYTHONOUT
 #	grep '^include' $< | sed "s/[^\"]*\"\([^\"]*.proto\)\"/$($< :"
 
 $(STAMPDIR)/Geometry : $(STAMPDIR)/Vec3
-$(STAMPDIR)/Topology : $(STAMPDIR)/Vec3
+$(STAMPDIR)/Topology : $(STAMPDIR)/Vec3 $(STAMPDIR)/Geometry
 
 $(CPPOUT) $(PYTHONOUT) $(STAMPDIR):
 	mkdir -p $@

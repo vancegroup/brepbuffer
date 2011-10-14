@@ -1,6 +1,7 @@
 package brepbuffer.topo;
 
 import "Vec3.proto";
+import "Geometry.proto";
 
 message Vertex {
 	optional Vec3 location = 1;
