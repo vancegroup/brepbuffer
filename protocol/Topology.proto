@@ -42,3 +42,7 @@ message Region {
 message Body {
 	repeated Region regions = 1;
 }
+
+message Part {
+	repeated Body bodies = 1;
+}
