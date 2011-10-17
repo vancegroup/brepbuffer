@@ -21,7 +21,7 @@
 #define INCLUDED_assignVec3Buf_h_GUID_6b1c9b69_9596_46d4_b24e_8caf1e58d7bd
 
 // Internal Includes
-#include "Vec3.pb.h"
+#include <brepbuffer/Vec3.pb.h>
 
 // Library/third-party includes
 // - none
