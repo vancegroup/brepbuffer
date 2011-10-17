@@ -55,6 +55,7 @@ message Surface {
 	message Sphere {
 		optional Vec3 center = 1;
 		optional double radius = 2;
+		optional Vec3 axis = 3;
 	}
 	message Hyperbola {
 		optional Vec3 center = 1;
