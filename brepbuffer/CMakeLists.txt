@@ -18,3 +18,8 @@ set(SOURCES
 include_directories(${BREPBUFFER_INCLUDE_DIRS})
 add_library(brepbuffer STATIC ${PROTO_FILES} ${PROTO_SOURCES} ${PROTO_HEADERS} ${SOURCES} ${HEADERS})
 target_link_libraries(brepbuffer ${PROTOBUF_LIBRARIES})
+
+if(NOT WIN32)
+	find_package(Threads)
+	target_link_libraries(brepbuffer ${CMAKE_THREAD_LIBS_INIT})
+endif()
