@@ -19,6 +19,7 @@ add_subdirectory(brepbuffer)
 
 if(${CMAKE_SOURCE_DIR} STREQUAL ${CMAKE_CURRENT_SOURCE_DIR})
 	# We're our own project
+	add_subdirectory(applications)
 else()
 	# We're a subproject
 	set(BREPBUFFER_INCLUDE_DIRS ${BREPBUFFER_INCLUDE_DIRS} PARENT_SCOPE)
