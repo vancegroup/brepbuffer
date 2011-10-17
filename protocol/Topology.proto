@@ -22,6 +22,7 @@ message Wire {
 
 message Face {
 	repeated Wire wires = 1;
+	optional geom.Surface surface = 2;
 }
 
 message Facade {
