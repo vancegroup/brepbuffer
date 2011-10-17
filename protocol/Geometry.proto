@@ -13,8 +13,10 @@ message Curve {
 		optional Vec3 normal = 3;
 	}
 	message Ellipse {
-		optional double radius_major = 1;
-		optional double radius_minor = 2;
+		optional Vec3 center = 1;
+		optional Vec3 normal = 2;
+		optional double radius_major = 3;
+		optional double radius_minor = 4;
 	}
 	message Parabola {
 	}
