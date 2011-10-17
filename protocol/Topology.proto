@@ -16,6 +16,8 @@ message Edge {
 	repeated geom.PCurve p_curve = 6; // Parametric surface curves for each face bounded by this edge
 }
 
+// Wire: a collection of edges that, if closed, serve as a bound on the surface
+// representing a face. In Parasolid-XT, this is known as a Loop.
 message Wire {
 	repeated Edge edges = 1;
 }
