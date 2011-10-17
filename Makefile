@@ -1,7 +1,7 @@
 #! make
 
 PROTOC = protoc
-INPUTDIR = protocol
+INPUTDIR = brefbuffer
 
 OUTDIR = generated
 CPPOUT = $(OUTDIR)/cpp
